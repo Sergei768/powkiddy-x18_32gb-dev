@@ -1,0 +1,34 @@
+/dev/block/platform/soc/11230000.mmc/by-name/boot      0640    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/recovery  0640    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/secro     0640    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/seccfg    0660    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/proinfo   0660    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/nvram     0660    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/para      0660    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/logo      0660    root    system
+/dev/block/platform/soc/11230000.mmc/by-name/frp       0660    root    system
+
+/dev/stpwmt               0660   system     system
+/dev/wmtdetect            0660   system     system
+
+/dev/stpbt                0660   bluetooth  net_bt_stack
+
+/dev/stpgps               0660   gps        gps
+/dev/gps                  0660   gps        system
+
+/dev/stpant               0660   system     system
+
+/dev/wmtWifi              0660   system     system
+
+/dev/fm                   0660   media     media
+
+/dev/msr3110              0666   root       root
+/dev/mt6605               0660   nfc        radio
+
+/dev/ion                  0666   root       root
+
+/dev/btif                 0600   system     system
+
+/dev/trustzone            0660   system       drmrpc
+
+/dev/block/mmcblk0rpmb    0660   root       system
