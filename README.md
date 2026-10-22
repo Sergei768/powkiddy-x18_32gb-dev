@@ -24,13 +24,25 @@ The original source was adapted for the 32GB hardware revision, including the co
 > **Important:** This project is intended for the original **PowKiddy X18 2GB / 32GB**.  
 > Do not use these images on the 16GB model or other devices.
 
-## Installation
-
 ### 1. Install LK
 
 The custom LK bootloader is required to access **Recovery**, **Fastboot**, and normal Android boot using only the Power button.
 
 The stock X18 boot menu expects volume keys, which do not work reliably on this device.
+
+Clone the LK installer repository:
+
+```bash
+git clone -b LK-Patch https://github.com/Sergei768/powkiddy-x18_32gb-dev.git
+```
+
+Enter the repository directory:
+
+```bash
+cd powkiddy-x18_32gb-dev
+```
+
+Then run the installer.
 
 **Linux**
 ```bash
@@ -59,7 +71,6 @@ Recovery
 Fastboot
 Normal
 ```
-
 ---
 
 ### 2. Unlock the Bootloader
