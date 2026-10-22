@@ -1,0 +1,39 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := wvm.cpp
+LOCAL_SHARED_LIBRARIES := libstagefright_foundation libmedia libstagefright_omx libstagefright_yuv libdrmframework liblog libstagefright
+LOCAL_MODULE := libshim_wvm
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_PROPRIETARY_MODULE := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := ui.cpp
+LOCAL_SHARED_LIBRARIES := libui libgui libbinder liblog libcutils libutils liblog
+LOCAL_MODULE := libshim_ui
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_PROPRIETARY_MODULE := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := drm.cpp
+LOCAL_LDLIBS := -ldl
+LOCAL_SHARED_LIBRARIES := liblog libdrmframework liblog libcrypto
+LOCAL_MODULE := libshim_drm
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_PROPRIETARY_MODULE := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := log_shim.c
+
+LOCAL_MODULE := libshim_log
+LOCAL_MODULE_TAGS := optional
+LOCAL_SHARED_LIBRARIES := liblog
+
+include $(BUILD_SHARED_LIBRARY)
+
+
+
