@@ -1,0 +1,18 @@
+
+
+
+type st480_exec , exec_type, file_type;
+type st480 ,domain;
+
+
+
+
+init_daemon_domain(st480)
+allow st480 msensor_device:chr_file { open ioctl read write };
+allow st480 gsensor_device:chr_file { open ioctl read write };
+allow st480 input_device:dir { search open read write };
+allow st480 input_device:file { open read };
+allow st480 input_device:chr_file { open ioctl read write };
+allow st480 system_data_file:dir { write add_name create setattr };
+allow st480 system_data_file:dir remove_name;
+

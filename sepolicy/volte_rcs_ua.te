@@ -1,0 +1,18 @@
+
+type volte_rcs_ua, domain;
+type volte_rcs_ua_exec, exec_type, file_type;
+type rcs_ua_proxy_socket, file_type;
+init_daemon_domain(volte_rcs_ua)
+
+allow volte_rcs_ua socket_device:sock_file write;
+allow volte_rcs_ua node:udp_socket node_bind;
+allow volte_rcs_ua self:udp_socket { bind create };
+allow volte_rcs_ua self:udp_socket read;
+
+allow volte_rcs_ua rcs_ua_proxy_socket:sock_file write;
+
+
+allow volte_rcs_ua volte_stack:unix_stream_socket connectto;
+
+unix_socket_connect(volte_rcs_ua, volte_stack, volte_stack)
+

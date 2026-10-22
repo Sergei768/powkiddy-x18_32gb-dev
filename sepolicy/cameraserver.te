@@ -1,0 +1,249 @@
+
+allow cameraserver camera_isp_device:chr_file rw_file_perms;
+allow cameraserver kd_camera_hw_device:chr_file rw_file_perms;
+allow cameraserver self:capability { setuid ipc_lock sys_nice };
+allow cameraserver sysfs_wake_lock:file rw_file_perms;
+allow cameraserver MTK_SMI_device:chr_file r_file_perms;
+allow cameraserver camera_pipemgr_device:chr_file r_file_perms;
+allow cameraserver kd_camera_flashlight_device:chr_file rw_file_perms;
+allow cameraserver lens_device:chr_file rw_file_perms;
+allow cameraserver nvdata_file:dir { write search add_name };
+allow cameraserver nvdata_file:file { read write getattr setattr open create };
+allow cameraserver nvram_data_file:dir search;
+allow cameraserver nvram_data_file:dir w_dir_perms;
+allow cameraserver nvram_data_file:file create_file_perms;
+allow cameraserver nvram_data_file:lnk_file read;
+allow cameraserver proc:file { read ioctl open };
+allow cameraserver proc_meminfo:file { read getattr open };
+allow cameraserver sysfs:file { read write open };
+
+allow cameraserver nvram_device:chr_file rw_file_perms;
+allow cameraserver self:netlink_kobject_uevent_socket { create setopt bind };
+allow cameraserver self:capability { net_admin };
+
+allow cameraserver devmap_device:chr_file { ioctl };
+
+allow cameraserver self:netlink_kobject_uevent_socket read;
+allow cameraserver system_data_file:file open;
+
+allow cameraserver bluetooth:unix_dgram_socket sendto;
+allow cameraserver bt_a2dp_stream_socket:sock_file write;
+allow cameraserver bt_int_adp_socket:sock_file write;
+
+allow cameraserver camera_sysram_device:chr_file r_file_perms;
+
+allow cameraserver Vcodec_device:chr_file rw_file_perms;
+
+
+allow cameraserver MtkCodecService:binder call;
+allow cameraserver ccci_device:chr_file rw_file_perms;
+allow cameraserver eemcs_device:chr_file rw_file_perms;
+allow cameraserver devmap_device:chr_file r_file_perms;
+allow cameraserver ebc_device:chr_file rw_file_perms;
+allow cameraserver nvram_device:blk_file rw_file_perms;
+allow cameraserver mmcblk0_block_device:blk_file rw_file_perms;
+
+allow cameraserver mtk_sched_device:chr_file rw_file_perms;
+
+allow cameraserver block_device:dir { write search };
+
+allow cameraserver fm_device:chr_file rw_file_perms;
+
+allow cameraserver block_device:dir search;
+allow cameraserver FM50AF_device:chr_file rw_file_perms;
+allow cameraserver AD5820AF_device:chr_file rw_file_perms;
+allow cameraserver DW9714AF_device:chr_file rw_file_perms;
+allow cameraserver DW9814AF_device:chr_file rw_file_perms;
+allow cameraserver AK7345AF_device:chr_file rw_file_perms;
+allow cameraserver DW9714A_device:chr_file rw_file_perms;
+allow cameraserver LC898122AF_device:chr_file rw_file_perms;
+allow cameraserver LC898212AF_device:chr_file rw_file_perms;
+allow cameraserver BU6429AF_device:chr_file rw_file_perms;
+allow cameraserver DW9718AF_device:chr_file rw_file_perms;
+allow cameraserver BU64745GWZAF_device:chr_file rw_file_perms;
+allow cameraserver MAINAF_device:chr_file rw_file_perms;
+allow cameraserver MAIN2AF_device:chr_file rw_file_perms;
+allow cameraserver SUBAF_device:chr_file rw_file_perms;
+
+
+allow cameraserver bootanim:binder { transfer call };
+
+allow cameraserver sdcard_type:file append;
+
+allow cameraserver camera_fdvt_device:chr_file rw_file_perms;
+
+binder_call(cameraserver,MtkCodecService)
+
+allow cameraserver mediaserver_data_file:file create_file_perms;
+allow cameraserver mediaserver_data_file:dir create_dir_perms;
+allow cameraserver sec_device:chr_file r_file_perms;
+
+allow cameraserver graphics_device:chr_file rw_file_perms;
+
+allow cameraserver smartpa_device:chr_file rw_file_perms;
+
+allow cameraserver mtk_jpeg_device:chr_file r_file_perms;
+
+allow cameraserver uhid_device:chr_file rw_file_perms;
+
+allow cameraserver CAM_CAL_DRV_device:chr_file rw_file_perms;
+allow cameraserver CAM_CAL_DRV1_device:chr_file rw_file_perms;
+allow cameraserver CAM_CAL_DRV2_device:chr_file rw_file_perms;
+
+allow cameraserver vow_device:chr_file rw_file_perms;
+
+allow cameraserver rpc_socket:sock_file write;
+allow cameraserver ttySDIO_device:chr_file rw_file_perms;
+
+allow cameraserver surfaceflinger:file getattr;
+
+allow cameraserver sysfs_lowmemorykiller:file { read open };
+
+allow cameraserver proc_mtkcooler:dir search;
+allow cameraserver proc_mtktz:dir search;
+allow cameraserver proc_thermal:dir search;
+allow cameraserver thermal_manager_data_file:file create_file_perms;
+allow cameraserver thermal_manager_data_file:dir { rw_dir_perms setattr };
+
+allow cameraserver qemu_pipe_device:chr_file rw_file_perms;
+
+allow cameraserver system_server:unix_stream_socket { read write };
+
+allow cameraserver radio_data_file:dir search;
+allow cameraserver radio_data_file:file open;
+
+allow cameraserver radio_data_file:file open;
+
+allow cameraserver untrusted_app:dir search;
+
+allow cameraserver offloadservice_device:chr_file rw_file_perms;
+
+allow cameraserver sensorservice_service:service_manager find;
+
+allow cameraserver system_data_file:dir write;
+allow cameraserver storage_file:lnk_file {read write};
+allow cameraserver mnt_user_file:dir {write read search};
+allow cameraserver mnt_user_file:lnk_file {read write};
+
+allow cameraserver surfaceflinger:fifo_file {read write};
+
+
+allow cameraserver nvcfg_file:dir create_dir_perms;
+allow cameraserver nvcfg_file:file create_file_perms;
+
+
+allow cameraserver camera_dpe_device:chr_file rw_file_perms;
+
+allow cameraserver camera_tsf_device:chr_file rw_file_perms;
+
+allow cameraserver tmpfs:dir search;
+
+allow cameraserver system_file:dir { read open };
+allow cameraserver gpu_device:chr_file { read open write getattr ioctl };
+
+
+allow cameraserver property_socket:sock_file write;
+allow cameraserver proc:file getattr;
+allow cameraserver shell_exec:file { execute read getattr open};
+domain_auto_trans(cameraserver, thermal_manager_exec, thermal_manager)
+allow cameraserver thermal_manager_exec:file { read getattr open execute};
+allow cameraserver init:unix_stream_socket connectto;
+
+allow cameraserver proc_ged:file {open read write ioctl getattr};
+
+
+allow cameraserver guiext-server:binder { transfer call };
+
+allow cameraserver proc_secmem:file { read write open};
+
+allow cameraserver mobicore_data_file:file getattr;
+allow cameraserver proc_secmem:file ioctl;
+allow cameraserver mobicore_data_file:file getattr;
+
+allow cameraserver mobicore:unix_stream_socket connectto;
+allow cameraserver mobicore_data_file:dir search;
+allow cameraserver mobicore_data_file:file { getattr read open lock};
+allow cameraserver mobicore_user_device:chr_file { read write open ioctl};
+
+allow cameraserver persist_data_file:dir { create write add_name search};
+allow cameraserver persist_data_file:file { read write create open getattr };
+
+allow cameraserver statusd:unix_stream_socket connectto;
+
+allow cameraserver offloadservice_device:chr_file { read write ioctl open };
+
+allow cameraserver mtk_perf_service:service_manager find;
+
+allow cameraserver pq_service:service_manager { find };
+
+allow cameraserver surfaceflinger:dir search;
+allow cameraserver surfaceflinger:file { read open };
+
+allow cameraserver custom_file:dir search;
+
+allow cameraserver untrusted_app_tmpfs:file write;
+
+allow cameraserver proc_thermal:file { write getattr open };
+allow cameraserver proc_mtkcooler:file { read write open };
+allow cameraserver proc_mtktz:file { read write open };
+allow cameraserver proc_thermal:file { read write open };
+allow cameraserver thermal_manager_data_file:file setattr;
+
+
+allow cameraserver mtk_codec_service_service:service_manager find;
+
+allow cameraserver ancservice_device:chr_file { read write ioctl open };
+
+binder_call(cameraserver, guiext-server)
+
+allow cameraserver dri_device:chr_file { read write open ioctl };
+
+allow cameraserver fuse:dir { create_dir_perms };
+allow cameraserver fuse:file { create_file_perms };
+allow cameraserver property_socket:sock_file write;
+allow cameraserver sysfs:file getattr;
+allow cameraserver init:unix_stream_socket connectto;
+allow cameraserver debug_prop:property_service set;
+allow cameraserver system_prop:property_service set;
+
+allow cameraserver fuse:dir { write search create add_name };
+allow cameraserver fuse:file { read write create open getattr };
+
+allow cameraserver sdcardfs:dir { create_dir_perms };
+allow cameraserver sdcardfs:file { create_file_perms };
+allow cameraserver media_rw_data_file:dir { create_dir_perms };
+allow cameraserver media_rw_data_file:file { create_file_perms };
+
+set_prop(cameraserver,logmuch_prop)
+
+allow cameraserver sw_sync_device:chr_file {open read write ioctl getattr};
+
+allow cameraserver vtservice:binder { transfer call };
+allow cameraserver vtservice:fd use;
+
+allow cameraserver system_app_data_file:file { read getattr };
+
+allow cameraserver system_app:dir search;
+allow cameraserver system_app:file { read open getattr };
+allow cameraserver platform_app:dir search;
+allow cameraserver platform_app:file { read open getattr };
+allow cameraserver untrusted_app:dir search;
+allow cameraserver untrusted_app:file { read open getattr };
+
+allow cameraserver mjc_lib_prop:property_service set;
+allow cameraserver mtk_mjc_prop:property_service set;
+
+allow cameraserver mtk_rrc_device:chr_file { read write ioctl open };
+
+allow cameraserver MJC_device:chr_file { read write ioctl open };
+
+allow cameraserver media_wfd_prop:property_service set;
+
+allow cameraserver fuse:dir { write search create add_name };
+allow cameraserver fuse:file { read write create open getattr };
+
+allow cameraserver media_rw_data_file:dir { rw_dir_perms };
+allow cameraserver media_rw_data_file:file { create_file_perms };
+allow cameraserver sdcardfs:dir { w_dir_perms };
+allow cameraserver sdcardfs:file { create_file_perms };
+allow cameraserver sysfs:file getattr;

@@ -1,0 +1,7 @@
+
+type tiny_swapon_exec , exec_type, file_type;
+type tiny_swapon ,domain;
+
+init_daemon_domain(tiny_swapon)
+allow tiny_swapon zram0_device:blk_file rw_file_perms;
+allow tiny_swapon enableswap:fd use;

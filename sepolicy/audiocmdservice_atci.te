@@ -1,0 +1,37 @@
+
+type audiocmdservice_atci_exec , exec_type, file_type;
+type audiocmdservice_atci ,domain;
+
+init_daemon_domain(audiocmdservice_atci)
+
+binder_use(audiocmdservice_atci)
+binder_call(audiocmdservice_atci, mediaserver)
+allow audiocmdservice_atci mediaserver:chr_file create_file_perms;
+allow audiocmdservice_atci mediaserver:dir w_dir_perms;
+allow audiocmdservice_atci mediaserver_service:service_manager find;
+
+binder_call(audiocmdservice_atci, audioserver)
+allow audiocmdservice_atci audioserver:chr_file create_file_perms;
+allow audiocmdservice_atci audioserver:dir w_dir_perms;
+allow audiocmdservice_atci audioserver_service:service_manager find;
+
+allow audiocmdservice_atci nvram_device:devfile_class_set rw_file_perms;
+allow audiocmdservice_atci nvram_data_file:dir create_dir_perms;
+allow audiocmdservice_atci nvram_data_file:file create_file_perms;
+allow audiocmdservice_atci nvdata_file:dir create_dir_perms;
+allow audiocmdservice_atci nvdata_file:file create_file_perms;
+
+allow audiocmdservice_atci sdcard_type:file create_file_perms;
+allow audiocmdservice_atci sdcard_type:dir w_dir_perms;
+
+allow audiocmdservice_atci media_rw_data_file:dir create_dir_perms;
+allow audiocmdservice_atci media_rw_data_file:file create_file_perms;
+
+allow audiocmdservice_atci block_device:dir { write search };
+allow audiocmdservice_atci mnt_user_file:dir rw_dir_perms;
+allow audiocmdservice_atci { mnt_user_file storage_file }:lnk_file rw_file_perms;
+allow audiocmdservice_atci mmcblk0_block_device:blk_file { read write };
+
+userdebug_or_eng(`
+  allow audiocmdservice_atci self:capability { dac_override sys_nice fowner chown fsetid setuid ipc_lock net_admin};
+')

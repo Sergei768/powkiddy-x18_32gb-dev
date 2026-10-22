@@ -1,0 +1,3 @@
+
+allow wpa platform_app:fd use;
+allow wpa platform_app_tmpfs:file write;

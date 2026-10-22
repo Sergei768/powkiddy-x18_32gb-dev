@@ -1,0 +1,21 @@
+
+type rda, domain;
+type rda_exec, exec_type, file_type;
+typeattribute rda mlstrustedsubject;
+
+
+init_daemon_domain(rda)
+
+allow rda mobicore:unix_stream_socket connectto;
+allow rda mobicore_data_file:file r_file_perms;
+allow rda mobicore_user_device:chr_file rw_file_perms;
+allow rda mobicore_data_file:dir search;
+
+allow rda domain:dir { getattr search };
+allow rda domain:file { read open };
+allow rda shell_exec:file rx_file_perms;
+allow rda system_file:file rx_file_perms;
+allow rda rootfs:file rx_file_perms;
+userdebug_or_eng(`
+allow rda su_exec:file r_file_perms;
+')

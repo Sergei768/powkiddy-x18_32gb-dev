@@ -1,0 +1,26 @@
+
+allow bluetooth stpbt_device:chr_file rw_file_perms;
+
+allow bluetooth nvdata_file:dir search;
+allow bluetooth nvdata_file:file rw_file_perms;
+
+allow bluetooth stpbt_device:chr_file rw_file_perms;
+
+allow bluetooth mtkrild:unix_stream_socket connectto;
+
+allow bluetooth nvram_data_file:dir search;
+allow bluetooth nvram_data_file:file rw_file_perms;
+allow bluetooth nvram_data_file:lnk_file read;
+allow bluetooth nvdata_file:dir search;
+allow bluetooth nvdata_file:file { read write getattr open };
+
+allow bluetooth block_device:dir search;
+allow bluetooth proc_secmem:file { read open };
+
+allow bluetooth platform_app_tmpfs:file write;
+
+allow bluetooth surfaceflinger:fifo_file { read write };
+
+allow bluetooth rilproxy:unix_stream_socket connectto;
+
+allow bluetooth program_binary_service:service_manager find;

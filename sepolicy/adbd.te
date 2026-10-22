@@ -1,0 +1,30 @@
+
+
+allow adbd graphics_device:chr_file r_file_perms;
+
+allow adbd platform_app_data_file:dir ra_dir_perms;
+allow adbd platform_app_data_file:file create_file_perms;
+allow adbd radio_data_file:file r_file_perms;
+
+allow adbd self:capability2 syslog;
+
+allow adbd block_device:dir r_dir_perms;
+allow adbd kernel:process setsched;
+allow adbd self:capability { net_raw ipc_lock dac_override };
+allow adbd system_data_file:dir w_dir_perms;
+file_type_auto_trans(adbd, system_data_file, adbd_data_file)
+allow adbd adbd_data_file:file create_file_perms;
+
+allow adbd qemu_pipe_device:chr_file rw_file_perms;
+
+allow adbd aee_exp_data_file:dir r_dir_perms;
+allow adbd aee_exp_data_file:file r_file_perms;
+
+allow adbd surfaceflinger:dir search;
+allow adbd surfaceflinger:file r_file_perms;
+
+allow adbd sf_rtt_file:dir getattr;
+
+allow adbd surfaceflinger:fifo_file rw_file_perms;
+
+allow adbd proc_ged:file {open read write ioctl getattr};

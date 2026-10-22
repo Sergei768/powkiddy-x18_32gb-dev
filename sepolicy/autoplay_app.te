@@ -1,0 +1,2 @@
+
+allow autoplay_app proc_ged:file {open read write ioctl getattr};

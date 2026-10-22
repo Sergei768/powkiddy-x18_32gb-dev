@@ -1,0 +1,67 @@
+allow recovery mtd_device:dir search;
+allow recovery mtd_device:chr_file { read write open ioctl getattr };
+allow recovery self:capability sys_resource;
+
+allow recovery system_app_data_file:dir {search };
+allow recovery system_app_data_file:file {read open};
+
+allow recovery misc_device:chr_file *;
+allow recovery block_device:dir *;
+allow recovery block_device:blk_file *;
+allow recovery system_block_device:blk_file *;
+allow recovery vfat:dir *;
+allow recovery vfat:file ~{ execute entrypoint };
+allow recovery misc_sd_device:chr_file *;
+allow recovery userdata_block_device:blk_file *;
+
+allow recovery rootfs:dir *;
+
+allow recovery bootimg_device:chr_file *;
+allow recovery recovery_device:chr_file *;
+allow recovery logo_device:chr_file *;
+allow recovery preloader_device:chr_file *;
+allow recovery uboot_device:chr_file *;
+allow recovery init:dir *;
+allow recovery init:file ~{ execute entrypoint execute_no_trans};
+allow recovery init:lnk_file *;
+allow recovery kernel:dir *;
+allow recovery kernel:file ~{ execute entrypoint execute_no_trans};
+allow recovery kernel:lnk_file *;
+
+
+allow recovery healthd:dir *;
+allow recovery healthd:file ~{ execute entrypoint execute_no_trans};
+allow recovery healthd:lnk_file *;
+dontaudit recovery self:capability sys_ptrace;
+allow recovery ueventd:dir *;
+allow recovery ueventd:file ~{ execute entrypoint execute_no_trans};
+allow recovery ueventd:lnk_file *;
+
+
+userdebug_or_eng(`
+  allow recovery su:dir *;
+  allow recovery su:file ~{execute execute_no_trans entrypoint};
+  allow recovery su:lnk_file *;
+')
+
+
+allow recovery pmt_device:chr_file *;
+allow recovery tee_part_device:chr_file *;
+
+allow recovery proc_sysrq:file { write open };
+allow recovery sec_device:chr_file { read ioctl open };
+allow recovery sec_ro_device:chr_file { read open };
+allow recovery seccfg_device:chr_file { read open };
+allow recovery self:capability sys_boot;
+
+allow recovery app_data_file:dir { read open };
+
+allow recovery md_ctrl:file { read getattr open };
+allow recovery mobicore_data_file:dir { read open };
+
+allow recovery mtd_device:dir search;
+allow recovery mtd_device:chr_file { read write open ioctl getattr };
+allow recovery self:capability sys_resource;
+
+allow recovery fsck_exec:file { execute execute_no_trans };
+allow recovery resize_exec:file { execute execute_no_trans };

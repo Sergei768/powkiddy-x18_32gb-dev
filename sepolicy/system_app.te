@@ -1,0 +1,117 @@
+
+typeattribute system_app mlstrustedsubject;
+
+allow system_app nvram_agent_binder:binder call;
+
+allow system_app media_rw_data_file:dir create;
+
+userdebug_or_eng(`
+allow system_app media_rw_data_file:file append;
+')
+
+allow system_app vfat:dir create;
+
+allow system_app proc_secmem:file rw_file_perms;
+
+allow system_app atci_serv_fw_socket:sock_file write;
+allow system_app atci_service:unix_stream_socket connectto;
+
+allow system_app rcs_ua_proxy_socket:sock_file write;
+allow system_app volte_rcs_ua:unix_stream_socket connectto;
+
+allow system_app teei_fp_device:chr_file rw_file_perms;
+allow system_app teei_client_device:chr_file r_file_perms;
+
+allow system_app touch_device:chr_file { read ioctl open };
+
+allow system_app guiext-server:binder { transfer call };
+
+
+binder_call(system_app, MtkCodecService)
+
+allow system_app platform_app_tmpfs:file write;
+
+allow system_app apk_private_data_file:dir getattr;
+allow system_app asec_image_file:dir getattr;
+allow system_app dontpanic_data_file:dir getattr;
+allow system_app drm_data_file:dir getattr;
+allow system_app install_data_file:file getattr;
+allow system_app lost_found_data_file:dir getattr;
+allow system_app media_data_file:dir getattr;
+allow system_app property_data_file:dir getattr;
+allow system_app shell_data_file:dir search;
+allow system_app thermal_manager_exec:file { read execute open execute_no_trans getattr};
+allow system_app proc_thermal:dir search;
+allow system_app proc_thermal:file { read getattr open write };
+allow system_app proc_mtkcooler:dir search;
+allow system_app proc_mtkcooler:file { read getattr open write };
+allow system_app proc_mtktz:dir search;
+allow system_app proc_mtktz:file  { read getattr open write };
+allow system_app proc_slogger:file { read getattr open write };
+
+allow system_app thermal_manager_data_file:file { open getattr read write create};
+allow system_app thermal_manager_data_file:file { open setattr lock };
+allow system_app thermal_manager_data_file:dir { search getattr open read write setattr add_name };
+
+allow system_app logmuch_prop:property_service set;
+
+userdebug_or_eng(`
+allow system_app media_rw_data_file:dir { read open };
+allow system_app media_rw_data_file:file { read open };
+')
+
+allow system_app ppl_agent:binder call;
+
+allow system_app mtk_crossmount_service:service_manager add;
+
+allow system_app hotknot_prop:property_service set;
+
+unix_socket_connect(system_app, agpsd, mtk_agpsd);
+
+allow system_app mtk_hotknot_service:service_manager add;
+
+allow system_app hotknot_device:chr_file { read write ioctl open };
+
+allow system_app devmap_device:chr_file { read ioctl open };
+
+allow system_app graphics_device:chr_file { read write ioctl open };
+allow system_app graphics_device:dir search;
+
+allow system_app irtx_device:chr_file { read write ioctl open };
+
+allow system_app irrx_device:chr_file { read write ioctl open };
+
+allow system_app mtk_consumerir_service:service_manager add;
+
+allow system_app qemu_pipe_device:chr_file rw_file_perms;
+
+allow system_app ctl_rbfota_prop:property_service set;
+
+allow system_app ril_volte_stack_rcsuaproxy_prop:property_service set;
+
+
+dontaudit system_app isolated_app_tmpfs:file write;
+
+dontaudit system_app untrusted_app_tmpfs:file write;
+
+dontaudit system_app radio_data_file:dir search;
+
+allow system_app cache_file:dir { write create add_name };
+allow system_app cache_file:file { write create open };
+
+allow system_app vie_command_service:service_manager add;
+
+allow system_app program_binary_service:service_manager find;
+
+allow system_app media_rw_data_file:dir { read open write remove_name search add_name };
+allow system_app media_rw_data_file:file { read write create unlink open rename };
+allow system_app media_rw_data_file:dir rmdir;
+
+allow system_app vfat:dir { write remove_name add_name };
+allow system_app vfat:file { rename create unlink };
+
+allow system_app cache_recovery_file:dir { write search add_name remove_name };
+allow system_app cache_recovery_file:file { read write create open getattr unlink };
+
+allow system_app vfat:dir create;
+

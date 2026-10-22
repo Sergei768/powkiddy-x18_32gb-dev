@@ -1,0 +1,16 @@
+
+
+
+type sysenv_daemon_exec , exec_type, file_type;
+type sysenv_daemon ,domain;
+
+
+
+
+init_daemon_domain(sysenv_daemon)
+
+allow sysenv_daemon block_device:dir search;
+allow sysenv_daemon para_block_device:blk_file rw_file_perms;
+allow sysenv_daemon proc_lk_env:file rw_file_perms;
+allow sysenv_daemon self:netlink_socket { read bind create };
+

@@ -1,0 +1,24 @@
+
+
+
+type terservice_exec , exec_type, file_type;
+type terservice ,domain;
+
+
+
+
+init_daemon_domain(terservice)
+
+allow terservice terservice_service:service_manager add;
+
+set_prop(terservice, terservice_prop)
+
+allow terservice ccci_device:chr_file { read write ioctl open };
+allow terservice sysfs_ccci:dir { r_dir_perms };
+allow terservice sysfs_ccci:file { r_file_perms };
+
+
+binder_use(terservice)
+binder_service(terservice)
+
+

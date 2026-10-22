@@ -1,0 +1,36 @@
+
+
+allow bootanim self:netlink_socket create_socket_perms;
+
+allow bootanim mediaserver:binder {call transfer};
+allow bootanim mediaserver_service:service_manager find;
+
+allow bootanim audioserver:binder {call transfer};
+allow bootanim audioserver_service:service_manager find;
+
+allow bootanim property_socket:sock_file write;
+allow bootanim init:unix_stream_socket connectto;
+allow bootanim custom_file:dir search;
+allow bootanim custom_file:file r_file_perms;
+allow bootanim bootani_prop:property_service set;
+allow bootanim debug_prop:property_service set;
+
+allow bootanim qemu_pipe_device:chr_file rw_file_perms;
+allow bootanim resourcecache_data_file:dir search;
+
+allow bootanim proc_ged:file {open read write ioctl getattr};
+
+
+
+allow bootanim proc_secmem:file { read open};
+
+allow bootanim guiext-server:binder call;
+allow bootanim guiext-server:binder transfer;
+
+allow bootanim dri_device:chr_file { read write open ioctl };
+
+allow bootanim terservice:binder call;
+
+allow bootanim terservice_service:service_manager find;
+
+

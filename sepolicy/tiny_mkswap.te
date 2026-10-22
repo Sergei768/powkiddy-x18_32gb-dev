@@ -1,0 +1,8 @@
+
+
+type tiny_mkswap_exec , exec_type, file_type;
+type tiny_mkswap ,domain;
+
+init_daemon_domain(tiny_mkswap)
+allow tiny_mkswap zram0_device:blk_file rw_file_perms;
+allow tiny_mkswap enableswap:fd use;

@@ -1,0 +1,191 @@
+
+allow debuggerd aed_device:chr_file rw_file_perms;
+allow debuggerd expdb_device:chr_file rw_file_perms;
+allow debuggerd expdb_block_device:blk_file rw_file_perms;
+allow debuggerd mmcblk0_block_device:blk_file rw_file_perms;
+allow debuggerd ccci_device:chr_file r_file_perms;
+allow debuggerd etb_device:chr_file rw_file_perms;
+allow debuggerd graphics_device:dir search;
+allow debuggerd graphics_device:chr_file r_file_perms;
+allow debuggerd Vcodec_device:chr_file r_file_perms;
+allow debuggerd camera_isp_device:chr_file r_file_perms;
+
+allow debuggerd block_device:dir search;
+
+allow debuggerd mtd_device:dir create_dir_perms;
+allow debuggerd mtd_device:chr_file rw_file_perms;
+
+allow debuggerd userdata_block_device:blk_file create_file_perms;
+allow debuggerd RT_Monitor_device:chr_file r_file_perms;
+
+allow debuggerd gpu_device:chr_file rw_file_perms;
+
+allow debuggerd exm0_device:chr_file r_file_perms;
+
+allow debuggerd shell_exec:file x_file_perms;
+allow debuggerd dex2oat_exec:file x_file_perms;
+
+allow debuggerd sdcard_type:dir create_dir_perms;
+allow debuggerd sdcard_type:file create_file_perms;
+
+
+allow debuggerd anr_data_file:dir create_dir_perms;
+allow debuggerd anr_data_file:file create_file_perms;
+
+allow debuggerd aee_exp_data_file:dir { relabelto create_dir_perms };
+allow debuggerd aee_exp_data_file:file create_file_perms;
+
+allow debuggerd aee_dumpsys_data_file:dir { relabelto create_dir_perms };
+allow debuggerd aee_dumpsys_data_file:file create_file_perms;
+
+allow debuggerd aee_core_data_file:dir create_dir_perms;
+allow debuggerd aee_core_data_file:file create_file_perms;
+
+allow debuggerd data_tmpfs_log_file:dir create_dir_perms;
+allow debuggerd data_tmpfs_log_file:file create_file_perms;
+
+allow debuggerd sf_rtt_file:dir search;
+allow debuggerd sf_rtt_file:file r_file_perms;
+
+allow debuggerd sysfs:file write;
+allow debuggerd proc:file write;
+allow debuggerd sysfs_lowmemorykiller:file r_file_perms;
+
+allow debuggerd self:capability { fsetid sys_nice sys_resource net_admin sys_module };
+
+allow debuggerd domain:process { sigkill getattr getsched};
+allow debuggerd domain:lnk_file getattr;
+
+allow debuggerd usermodehelper:file r_file_perms;
+
+allow debuggerd proc_security:file r_file_perms;
+
+allow debuggerd kernel:system syslog_read;
+
+allow debuggerd init:unix_stream_socket connectto;
+allow debuggerd property_socket:sock_file write;
+
+allow debuggerd debugfs:lnk_file read;
+
+allow debuggerd system_app_data_file:dir search;
+
+allow debuggerd app_data_file:dir search;
+
+allow debuggerd system_app_data_file:file r_file_perms;
+allow debuggerd app_data_file:file r_file_perms;
+
+allow debuggerd system_file:file execute_no_trans;
+
+allow debuggerd proc_slogger:file rw_file_perms;
+
+binder_use(debuggerd)
+allow debuggerd system_server:binder call;
+allow debuggerd surfaceflinger:binder call;
+allow debuggerd surfaceflinger:fd use;
+allow debuggerd platform_app:fd use;
+allow debuggerd platform_app_tmpfs:file write;
+
+allow debuggerd platform_app:unix_stream_socket connectto;
+
+allow debuggerd self:udp_socket { create ioctl };
+
+allow debuggerd init:process getsched;
+allow debuggerd kernel:process getsched;
+
+allow debuggerd sf_bqdump_data_file:dir rw_dir_perms;
+allow debuggerd sf_bqdump_data_file:file { r_file_perms unlink };
+
+
+allow debuggerd custom_file:dir search;
+
+allow debuggerd mnt_user_file:dir search;
+allow debuggerd mnt_user_file:lnk_file read;
+allow debuggerd storage_file:dir search;
+allow debuggerd storage_file:lnk_file read;
+
+allow debuggerd log_device:chr_file read;
+
+userdebug_or_eng(`allow debuggerd self:capability sys_admin;')
+
+allow debuggerd activity_service:service_manager find;
+allow debuggerd dbinfo_service:service_manager find;
+allow debuggerd meminfo_service:service_manager find;
+allow debuggerd self:capability sys_admin;
+allow debuggerd surfaceflinger_service:service_manager find;
+allow debuggerd window_service:service_manager find;
+
+allow debuggerd proc_lk_env:file rw_file_perms;
+
+allow debuggerd gfxinfo_service:service_manager find;
+
+allow debuggerd sysfs_scp:dir search;
+allow debuggerd sysfs_scp:file r_file_perms;
+
+allow debuggerd display_service:service_manager find;
+
+allow debuggerd para_block_device:blk_file rw_file_perms;
+allow debuggerd system_data_file:dir { write relabelfrom create add_name };
+allow debuggerd debugfs_tracing:file { read write open };
+allow debuggerd debugfs_binder:file r_file_perms;
+allow debuggerd debugfs_binder:dir r_dir_perms;
+
+set_prop(debuggerd, persist_mtk_aee_prop);
+set_prop(debuggerd, persist_aee_prop);
+set_prop(debuggerd, debug_mtk_aee_prop);
+
+set_prop(debuggerd, debug_bq_dump_prop);
+
+allow debuggerd debugfs_blockio:file { read open };
+allow debuggerd debugfs_fuseio:file { read open };
+allow debuggerd debugfs_fuseio:dir search;
+
+allow debuggerd sysfs_ccci:dir search;
+allow debuggerd sysfs_ccci:file { read open };
+
+allow debuggerd toolbox_exec:file { execute execute_no_trans };
+
+allow debuggerd media_rw_data_file:file  { create_file_perms };
+allow debuggerd media_rw_data_file:dir { create_dir_perms };
+
+allow debuggerd debugfs_fb:file { read open };
+allow debuggerd debugfs_fb:dir search;
+
+allow debuggerd debugfs_cpuhvfs:file { read open };
+allow debuggerd debugfs_cpuhvfs:dir search;
+
+allow debuggerd debugfs_dynamic_debug:dir search;
+allow debuggerd debugfs_dynamic_debug:file { read open };
+
+allow debuggerd procstats_service:service_manager find;
+allow debuggerd input_service:service_manager find;
+
+allow debuggerd sysfs_zram:dir search;
+allow debuggerd sysfs_zram:file { read getattr open };
+
+allow debuggerd debugfs_wakeup_sources:file { read open };
+allow debuggerd debugfs_dmlog_debug:file { read open };
+allow debuggerd debugfs_shrinker_debug:file { read open };
+allow debuggerd debugfs_rcu:file { read open };
+allow debuggerd debugfs_rcu:dir search;
+allow debuggerd debugfs_ged:file { read open };
+allow debuggerd debugfs_ged:dir search;
+
+allow debuggerd proc_ged:file {open read write ioctl getattr};
+
+allow debuggerd proc_secmem:file r_file_perms;
+
+allow debuggerd teei_fp_device:chr_file rw_file_perms;
+allow debuggerd teei_client_device:chr_file rw_file_perms;
+allow debuggerd ut_keymaster_device:chr_file rw_file_perms;
+
+allow debuggerd logmuch_data_file:dir search;
+allow debuggerd logmuch_data_file:file { read open };
+
+userdebug_or_eng(`
+  allow debuggerd coredump_file:dir { remove_name };
+  allow debuggerd coredump_file:file { unlink };
+')
+
+allow debuggerd dri_device:chr_file getattr;
+domain_auto_trans(debuggerd, dmlog_exec, dmlog)
+

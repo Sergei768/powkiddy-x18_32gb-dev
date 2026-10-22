@@ -1,0 +1,17 @@
+
+
+type wmt_loader ,domain;
+type wmt_loader_exec , exec_type, file_type;
+
+init_daemon_domain(wmt_loader)
+
+allow wmt_loader self:capability { chown dac_override };
+
+set_prop(wmt_loader, wmt_prop)
+
+allow wmt_loader wmtdetect_device:chr_file rw_file_perms;
+
+allow wmt_loader stpwmt_device:chr_file rw_file_perms;
+allow wmt_loader devpts:chr_file rwx_file_perms;
+
+allow wmt_loader proc:file setattr;
