@@ -1,0 +1,28 @@
+
+
+
+type pq_exec , exec_type, file_type;
+type pq ,domain;
+
+
+
+
+init_daemon_domain(pq)
+
+allow pq system_prop:property_service set;
+allow pq graphics_device:chr_file { read write open ioctl };
+
+allow pq init:unix_stream_socket connectto;
+allow pq property_socket:sock_file write;
+
+binder_use(pq)
+binder_call(pq, binderservicedomain)
+binder_service(pq)
+
+
+allow pq graphics_device:dir search;
+allow pq pq_service:service_manager add;
+
+
+allow pq pq_service:service_manager { find };
+allow pq permission_service:service_manager { find };

@@ -1,0 +1,15 @@
+
+get_prop(domain, mtk_core_property_type)
+
+allow domain debugfs_binder:dir search;
+
+allow domain sysfs_devinfo:file r_file_perms;
+
+
+allow domain exm0_device:chr_file rw_file_perms;
+
+allow domain log_device:dir search;
+allow domain log_device:chr_file w_file_perms;
+allow domain storage_file:dir search;
+
+allow domain esfp0_device:chr_file rw_file_perms;

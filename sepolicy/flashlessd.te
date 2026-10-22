@@ -1,0 +1,7 @@
+
+type flashlessd_exec, exec_type, file_type;
+type flashlessd, domain;
+
+
+
+init_daemon_domain(flashlessd)

@@ -1,0 +1,32 @@
+
+type enableswap_exec , exec_type, file_type;
+type enableswap ,domain;
+
+init_daemon_domain(enableswap)
+
+file_type_auto_trans(enableswap, system_data_file, enableswap_data_file)
+
+allow enableswap block_device:dir search;
+allow enableswap self:capability sys_admin;
+allow enableswap shell_exec:file { entrypoint read getattr };
+allow enableswap sysfs:file write;
+allow enableswap tiny_mkswap_exec:file rx_file_perms;
+allow enableswap tiny_swapon_exec:file rx_file_perms;
+allow enableswap zram0_device:blk_file rw_file_perms;
+
+allow enableswap proc:file write;
+allow enableswap system_file:file execute_no_trans;
+allow enableswap enableswap_data_file:file create_file_perms;
+allow enableswap system_data_file:dir ra_dir_perms;
+allow enableswap self:capability dac_override;
+
+allow enableswap init_tmpfs:file w_file_perms;
+
+allow enableswap rootfs:file { read open };
+allow enableswap sysfs_zram:dir search;
+allow enableswap sysfs_zram:file { write open };
+allow enableswap toolbox_exec:file rx_file_perms;
+
+allow enableswap cache_file:file { write open setattr };
+
+allow enableswap self:capability linux_immutable;

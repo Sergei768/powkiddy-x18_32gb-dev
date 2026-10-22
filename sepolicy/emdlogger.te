@@ -1,0 +1,70 @@
+
+type emdlogger_exec , exec_type, file_type;
+type emdlogger, domain;
+
+init_daemon_domain(emdlogger)
+
+binder_use(emdlogger)
+binder_service(emdlogger)
+
+allow emdlogger debug_mdlogger_prop:property_service set;
+allow emdlogger debug_prop:property_service set;
+allow emdlogger persist_mtklog_prop:property_service set;
+allow emdlogger system_radio_prop:property_service set;
+
+allow emdlogger ccci_device:chr_file { rw_file_perms };
+
+allow emdlogger eemcs_device:chr_file { rw_file_perms };
+
+allow emdlogger ttySDIO_device:chr_file { rw_file_perms };
+
+allow emdlogger vmodem_device:chr_file { rw_file_perms };
+
+allow emdlogger ttyGS_device:chr_file { rw_file_perms};
+
+allow emdlogger sdcard_type:dir { create_dir_perms };
+allow emdlogger sdcard_type:file { create_file_perms };
+
+allow emdlogger mdlog_data_file:dir { create_dir_perms relabelto };
+allow emdlogger mdlog_data_file:fifo_file { create_file_perms };
+allow emdlogger mdlog_data_file:file { create_file_perms };
+allow emdlogger system_data_file:dir { create_dir_perms relabelfrom};
+
+allow emdlogger mdlog_device:chr_file { rw_file_perms};
+
+allow emdlogger property_socket:sock_file write;
+allow emdlogger init:unix_stream_socket connectto;
+allow emdlogger platform_app:unix_stream_socket connectto;
+allow emdlogger shell_exec:file { rx_file_perms };
+allow emdlogger system_file:file execute_no_trans;
+allow emdlogger zygote_exec:file { rx_file_perms };
+
+allow emdlogger vfat:dir create_dir_perms;
+allow emdlogger vfat:file create_file_perms;
+
+allow emdlogger log_device:chr_file { write open };
+allow emdlogger mnt_user_file:dir search;
+allow emdlogger mnt_user_file:lnk_file read;
+allow emdlogger storage_file:lnk_file read;
+
+allow emdlogger mnt_media_rw_file:dir search;
+
+
+allow emdlogger rootfs:file r_file_perms;
+
+allow emdlogger storage_file:dir search;
+allow emdlogger tmpfs:lnk_file read;
+
+allow emdlogger sysfs:file { read open };
+
+allow emdlogger sysfs_ccci:dir search;
+allow emdlogger sysfs_ccci:file r_file_perms;
+
+allow emdlogger system_file:dir read;
+
+allow emdlogger security_file:dir search;
+allow emdlogger toolbox_exec:file rx_file_perms;
+
+allow emdlogger media_rw_data_file:file  { create_file_perms };
+allow emdlogger media_rw_data_file:dir { create_dir_perms };
+

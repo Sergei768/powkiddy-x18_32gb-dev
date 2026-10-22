@@ -1,0 +1,4 @@
+
+
+allow dnsmasq netd:file read;
+allow dnsmasq lannetmngrd:file read;

@@ -1,0 +1,6 @@
+
+allow hostapd system_wpa_socket:sock_file write;
+
+
+dontaudit hostapd kernel:system module_request;
+

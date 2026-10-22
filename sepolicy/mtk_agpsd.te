@@ -1,0 +1,39 @@
+
+type mtk_agpsd_exec, exec_type, file_type;
+type mtk_agpsd, domain;
+
+init_daemon_domain(mtk_agpsd)
+
+net_domain(mtk_agpsd)
+
+allow mtk_agpsd agps_device:chr_file rw_file_perms;
+allow mtk_agpsd ttySDIO_device:chr_file create_file_perms;
+allow mtk_agpsd ccci_device:chr_file create_file_perms;
+
+allow mtk_agpsd agpsd_data_file:dir create_dir_perms;
+allow mtk_agpsd agpsd_data_file:file create_file_perms;
+allow mtk_agpsd agpsd_data_file:sock_file create_file_perms;
+
+allow mtk_agpsd sdcard_type:dir create_dir_perms;
+allow mtk_agpsd sdcard_type:file create_file_perms;
+allow mtk_agpsd eemcs_device:chr_file rw_file_perms;
+allow mtk_agpsd mnt_user_file:dir create_dir_perms;
+
+allow mtk_agpsd tmpfs:lnk_file create_file_perms;
+allow mtk_agpsd storage_file:lnk_file create_file_perms;
+allow mtk_agpsd mnt_user_file:lnk_file create_file_perms;
+allow mtk_agpsd media_rw_data_file:dir { search write add_name read open };
+allow mtk_agpsd media_rw_data_file:file { create open append read };
+
+allow mtk_agpsd slpd:unix_dgram_socket sendto;
+
+allow mtk_agpsd nvcfg_file:dir create_dir_perms;
+allow mtk_agpsd nvcfg_file:file create_file_perms;
+
+allow mtk_agpsd mnld:unix_dgram_socket sendto;
+
+allow mtk_agpsd rilproxy:unix_dgram_socket sendto;
+
+allow mtk_agpsd system_server:unix_dgram_socket sendto;
+
+

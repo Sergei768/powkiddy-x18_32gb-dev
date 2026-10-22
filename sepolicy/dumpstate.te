@@ -1,0 +1,12 @@
+
+allow dumpstate MtkCodecService:binder call;
+allow dumpstate gatekeeper_service:service_manager find;
+allow dumpstate self:capability sys_admin;
+
+allow dumpstate proc_ged:file {open read write ioctl getattr};
+
+allow dumpstate GoogleOtaBinder:binder call;
+allow dumpstate ppl_agent:binder call;
+
+
+

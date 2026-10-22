@@ -1,0 +1,18 @@
+
+type mbimd, domain;
+type mbimd_exec, exec_type, file_type;
+
+init_daemon_domain(mbimd)
+
+
+
+allow mbimd init:unix_stream_socket connectto;
+allow mbimd mtkrild:unix_stream_socket connectto;
+allow mbimd property_socket:sock_file write;
+allow mbimd socket_device:sock_file write;
+
+allow mbimd system_prop:property_service set;
+
+allow mbimd self:capability2 block_suspend;
+allow mbimd sysfs_wake_lock:file { write open };
+allow mbimd mbim_device:chr_file { read write open ioctl };

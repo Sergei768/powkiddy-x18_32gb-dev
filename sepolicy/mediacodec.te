@@ -1,0 +1,77 @@
+
+allow mediacodec devmap_device:chr_file { ioctl };
+
+
+allow mediacodec Vcodec_device:chr_file { read write ioctl open };
+
+allow mediacodec M4U_device_device:chr_file rw_file_perms;
+allow mediacodec proc:file {open read};
+allow mediacodec sysfs:file {read write open};
+allow mediacodec debugfs_binder:dir search;
+allow mediacodec proc:file { getattr ioctl };
+allow mediacodec MTK_SMI_device:chr_file { ioctl read open };
+allow mediacodec storage_file:lnk_file {read write open};
+allow mediacodec tmpfs:dir search;
+allow mediacodec mnt_user_file:dir {write read search};
+allow mediacodec mnt_user_file:lnk_file {read write};
+allow mediacodec sdcard_type:dir {write read search add_name remove_name};
+allow mediacodec sdcard_type:file {getattr write read create open append unlink};
+allow mediacodec nvram_data_file:dir w_dir_perms;
+allow mediacodec nvram_data_file:file create_file_perms;
+allow mediacodec nvram_data_file:lnk_file read;
+allow mediacodec nvdata_file:dir w_dir_perms;
+allow mediacodec nvdata_file:file create_file_perms;
+allow mediacodec devmap_device:chr_file r_file_perms;
+allow mediacodec proc_meminfo:file {read getattr open};
+
+
+allow mediacodec mtk_sched_device:chr_file { read write ioctl open };
+
+
+
+
+allow mediacodec mediacodec_data_file:file create_file_perms;
+allow mediacodec mediacodec_data_file:dir create_dir_perms;
+allow mediacodec sec_device:chr_file r_file_perms;
+
+allow mediacodec surfaceflinger:file getattr;
+
+allow mediacodec sysfs_lowmemorykiller:file { read open };
+
+
+
+allow mediacodec untrusted_app:dir search;
+
+
+
+
+allow mediacodec MJC_device:chr_file { read write ioctl open };
+
+allow mediacodec mtk_codec_service_service:service_manager find;
+allow mediacodec MtkCodecService:binder call;
+allow mediacodec MtkCodecService:binder transfer;
+
+allow mediacodec proc_ged:file {open read write ioctl getattr};
+
+allow mediacodec guiext-server:binder { transfer call };
+
+allow mediacodec proc_secmem:file { read write open};
+
+allow mediacodec init:unix_stream_socket connectto;
+allow mediacodec mobicore_data_file:file { read open getattr};
+allow mediacodec mobicore_user_device:chr_file { read write ioctl open };
+allow mediacodec proc:file { read ioctl open };
+allow mediacodec property_socket:sock_file write;
+allow mediacodec mobicore:unix_stream_socket connectto;
+allow mediacodec proc_secmem:file { read write ioctl open};
+allow mediacodec mobicore_data_file:dir search;
+allow mediacodec persist_data_file:file { read getattr open };
+allow mediacodec persist_data_file:dir search;
+
+allow mediacodec mtk_perf_service:service_manager find;
+
+allow mediacodec debugfs_fb:dir search;
+
+allow mediacodec dri_device:chr_file { read write open ioctl };
+
+allow mediacodec custom_file:dir search;

@@ -1,0 +1,30 @@
+
+type program_binary, domain;
+type program_binary_exec, exec_type, file_type;
+
+init_daemon_domain(program_binary)
+
+binder_service(program_binary)
+binder_use(program_binary)
+binder_call({domain -init -netd}, program_binary)
+
+allow program_binary gpu_device:chr_file { open read write ioctl };
+allow program_binary gpu_device:chr_file getattr;
+
+allow program_binary program_binary_service:service_manager add;
+
+allow program_binary system_server:binder call;
+
+allow program_binary program_binary_prop:property_service set;
+allow program_binary property_socket:sock_file write;
+allow program_binary init:unix_stream_socket connectto;
+
+allow system_server program_binary_service:service_manager find;
+
+allow program_binary program_binary_service:service_manager find;
+
+allow program_binary system_file:file execute_no_trans;
+
+allow program_binary dri_device:chr_file { read write open ioctl };
+
+allow program_binary proc_ged:file {open read write ioctl getattr};

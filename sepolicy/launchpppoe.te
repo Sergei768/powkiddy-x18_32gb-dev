@@ -1,0 +1,8 @@
+
+type launchpppoe, domain;
+type launchpppoe_exec, exec_type, file_type;
+
+
+
+domain_auto_trans(init, launchpppoe_exec, ppp)
+

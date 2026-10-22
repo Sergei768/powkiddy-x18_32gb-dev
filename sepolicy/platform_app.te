@@ -1,0 +1,108 @@
+
+typeattribute platform_app mlstrustedsubject;
+
+unix_socket_connect(platform_app, agpsd, mtk_agpsd);
+
+
+allow platform_app fm_device:chr_file rw_file_perms;
+
+allow platform_app mobile_log_d:unix_stream_socket connectto;
+allow platform_app mdlogger:unix_stream_socket connectto;
+allow platform_app emdlogger:unix_stream_socket connectto;
+allow platform_app init:unix_stream_socket connectto;
+allow platform_app cmddumper:unix_stream_socket connectto;
+unix_socket_connect(platform_app, netdiag, netdiag)
+
+allow platform_app ttySDIO_device:chr_file rw_file_perms;
+
+allow platform_app sdcard_type:file create_file_perms;
+allow platform_app sdcard_type:dir create_dir_perms;
+
+allow platform_app aee_exp_data_file:file r_file_perms;
+allow platform_app aee_exp_data_file:dir r_dir_perms;
+
+allow platform_app mdlog_data_file:file rw_file_perms;
+allow platform_app mdlog_data_file:dir rw_dir_perms;
+
+allow platform_app mnld:unix_stream_socket connectto;
+
+allow platform_app system_app_service:service_manager find;
+
+allow platform_app proc_secmem:file r_file_perms;
+
+allow platform_app als_ps_device:chr_file { read open ioctl };
+
+allow platform_app mobicore_tui_device:chr_file { read open ioctl };
+allow platform_app mobicore_user_device:chr_file rw_file_perms;
+allow platform_app mobicore:unix_stream_socket connectto;
+allow platform_app mobicore_data_file:file r_file_perms;
+allow platform_app mobicore_data_file:dir search;
+allow platform_app self:netlink_kobject_uevent_socket {create bind read setopt};
+
+allow platform_app guiext-server:binder { transfer call };
+
+allow platform_app system_app_data_file:file {read write};
+
+allow platform_app fuseblk:dir create_dir_perms;
+
+allow platform_app fuseblk:file create_file_perms;
+
+allow platform_app md_monitor:unix_stream_socket connectto;
+
+allow platform_app dm_agent_binder_service:service_manager find;
+
+allow platform_app guiext-server_service:service_manager find;
+
+
+allow platform_app sdcard_type:file execute;
+
+allow platform_app mtk_crossmount_service:service_manager find;
+allow platform_app proc_mtktz:dir search;
+allow platform_app proc_mtktz:file read;
+
+allow platform_app camera_isp_device:chr_file rw_file_perms;
+
+allow platform_app mtk_consumerir_service:service_manager find;
+
+allow platform_app mtk_hotknot_service:service_manager find;
+
+allow platform_app mtk_kpd_device:chr_file rw_file_perms;
+
+allow platform_app qemu_pipe_device:chr_file rw_file_perms;
+
+allow platform_app system_app_data_file:dir search;
+
+allow platform_app pq_service:service_manager { find };
+
+allow platform_app debugfs:file getattr;
+
+allow platform_app aal_service:service_manager { find };
+
+allow platform_app ota_agent_service:service_manager find;
+
+
+allow platform_app anr_data_file:file rw_file_perms;
+
+allow platform_app Vcodec_device:chr_file { read write ioctl open };
+
+allow platform_app radio_data_file:dir search;
+
+allow platform_app nfc_service:service_manager find;
+
+allow platform_app mediaserver:dir search;
+
+allow platform_app vow_device:chr_file rw_file_perms;
+
+allow platform_app ppl_agent_service:service_manager find;
+
+allow platform_app program_binary_service:service_manager find;
+
+unix_socket_connect(platform_app, rild_embms, rilproxy)
+
+allow platform_app embms_library_file:file create_file_perms;
+allow platform_app embms_library_file:dir rw_dir_perms;
+
+allow platform_app esfp0_device:chr_file rw_file_perms;
+allow platform_app esfp0_device:chr_file rw_file_perms;
+allow platform_app etsd_service:service_manager find;
+allow platform_app etsd:binder { call transfer };

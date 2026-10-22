@@ -1,0 +1,2 @@
+
+allow mediaextractor proc_ged:file {open read write ioctl getattr};

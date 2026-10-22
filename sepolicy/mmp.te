@@ -1,0 +1,11 @@
+
+
+
+type mmp_exec , exec_type, file_type;
+type mmp ,domain;
+
+
+
+
+init_daemon_domain(mmp)
+

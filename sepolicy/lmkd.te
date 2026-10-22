@@ -1,0 +1,5 @@
+
+
+dontaudit lmkd zygote:dir rw_dir_perms;
+
+dontaudit lmkd platform_app:fd use;

@@ -1,0 +1,5 @@
+
+allow gatekeeperd mobicore:unix_stream_socket connectto;
+allow gatekeeperd mobicore_user_device:chr_file { read write ioctl open };
+
+allow gatekeeperd teei_fp_device:chr_file { read write open ioctl };
